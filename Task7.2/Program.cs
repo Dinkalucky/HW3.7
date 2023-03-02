@@ -49,14 +49,14 @@ namespace Task7._2
             Console.WriteLine("Який поїзд бажаєте викликати?");
             Int32.TryParse(Console.ReadLine(), out trainNum);
 
-            foreach (var item in trainArray)
+            for (int i = 0; i<trainArray.Length;i++)
             {
-                if (item.TrainNumber == trainNum)
+                if (trainArray[i].TrainNumber == trainNum)
                 {
-                    Console.Write("Ваш поїзд: " + item.PointA + " " + item.TrainNumber + " " + item.DepTime + "\n");
+                    Console.Write("Ваш поїзд: " + trainArray[i].PointA + " " + trainArray[i].TrainNumber + " " + trainArray[i].DepTime + "\n");
                     break;
                 }
-                else
+                else if(trainArray[i].TrainNumber != trainNum && i==trainArray.Length-1) 
                 {
                     Console.WriteLine("Такого поїзда немає, подивіться увесь список поїздів: ");
                 }
