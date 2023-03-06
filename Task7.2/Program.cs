@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Task7._2
 {
@@ -22,28 +23,7 @@ namespace Task7._2
                 trainArray[i].DepTime = Console.ReadLine();
 
             }
-
-            string firstPoint = trainArray[0].PointA;
-            int firstNumber = trainArray[0].TrainNumber;
-            string firstTime = trainArray[0].DepTime;
-            for (int i = 0; i < trainArray.Length; i++)
-            {
-                for (int j = i; j < trainArray.Length; j++)
-                {
-                    if (trainArray[i].TrainNumber > trainArray[j].TrainNumber)
-                    {
-                        firstNumber = trainArray[j].TrainNumber;
-                        firstPoint = trainArray[j].PointA;
-                        firstTime = trainArray[j].DepTime;
-                        trainArray[j].TrainNumber = trainArray[i].TrainNumber;
-                        trainArray[j].PointA = trainArray[i].PointA;
-                        trainArray[j].DepTime = trainArray[i].DepTime;
-                        trainArray[i].TrainNumber = firstNumber;
-                        trainArray[i].PointA = firstPoint;
-                        trainArray[i].DepTime = firstTime;
-                    }
-                }
-            }
+            
 
             int trainNum;
             Console.WriteLine("Який поїзд бажаєте викликати?");
@@ -62,8 +42,9 @@ namespace Task7._2
                 }
                 
             }
-
             Console.WriteLine("Всі поїзди:");
+
+            Array.Sort(trainArray);
 
             foreach (var item in trainArray)
             {

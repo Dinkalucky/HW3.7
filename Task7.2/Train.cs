@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Task7._2
 {
-    internal struct Train
+    internal struct Train:IComparable
     {
         private string pointA;
         private int trainNumber;
@@ -28,6 +29,12 @@ namespace Task7._2
         {
             get { return depTime; }
             set { depTime = value; }
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Train train) return TrainNumber.CompareTo(train.TrainNumber);
+            else throw new ArgumentException("Некорректное значение параметра");
         }
     }
 }
